@@ -39,18 +39,13 @@ fewUniqueData = loadDataArray("data-files/few-unique-values.txt")
 
 
 
-# Bubble Sort
+# Better Bubble sort
 def bubbleSort(anArray):
-    indexLength = len(anArray) - 1
-    sorted = False
+    for i in range (0, len(anArray) -1): 
+        for x in range(0, len(anArray) - i - 1):
+            if anArray[x] > anArray[x +1]:
+                anArray[x], anArray[x+1] = anArray[x+1], anArray[x]
 
-
-    while sorted == False:
-        sorted = True
-        for i in range (0, indexLength):
-            if anArray[i] > anArray[i+1]:
-                sorted = False
-                anArray[i], anArray[i+1] = anArray[i+1], anArray[i]
     return anArray
 
 
