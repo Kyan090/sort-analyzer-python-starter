@@ -53,7 +53,6 @@ def bubbleSort(anArray):
 # selection sort
 def selectiobnSort(anArray):
 
-
     for i in range(0, len(anArray) -1) :
         minValue = i
 
@@ -71,21 +70,53 @@ def selectiobnSort(anArray):
 
 
 
-
-# insertion Sort
+# Better Insertion sort
 def insertionSort(anArray):
-
-
-    for i in range(0, len(anArray) ):
+    for i in range (0, len(anArray)):
         insertPos = anArray[i]
+        insertVal = i-1
+
+        while insertVal >= 0 and insertPos < anArray[insertVal]:
+            anArray[insertVal + 1] = anArray[insertVal]
+            insertVal = insertVal - 1
+
+        anArray[insertVal + 1] = insertPos
+
+    return(anArray)
 
 
-        while anArray[i - 1] > insertPos and i > 0:
-            anArray[i], anArray[i -1] = anArray[i -1], anArray[i]
-            i = i -1
-   
-    return anArray
 
+
+
+
+# Insertion Sort Time 
+
+startTime = time.time()
+insertionSort(randomData)
+endTime = time.time()
+totalTime = endTime - startTime
+print("Insertion Sort Random Data: %s seconds" %totalTime  )
+
+
+startTime = time.time()
+insertionSort(reversedData)
+endTime = time.time()
+totalTime = endTime - startTime
+print("Insertion Sort Reversed Data: %s seconds" %totalTime  )
+
+
+startTime = time.time()
+insertionSort(nearlySortedData)
+endTime = time.time()
+totalTime = endTime - startTime
+print("Insertion Sort Nearly Sorted Data: %s seconds" %totalTime  )
+
+
+startTime = time.time()
+insertionSort(fewUniqueData)
+endTime = time.time()
+totalTime = endTime - startTime
+print("Insertion Sort Few Unique Data: %s seconds" %totalTime  )
 
 
 # Bubble Sort Times
@@ -149,31 +180,3 @@ totalTime = endTime - startTime
 print("Selection Sort Few Unique Data: %s seconds" %totalTime  )
 
 
-# Insertion Sort Time 
-
-startTime = time.time()
-insertionSort(randomData)
-endTime = time.time()
-totalTime = endTime - startTime
-print("Insertion Sort Random Data: %s seconds" %totalTime  )
-
-
-startTime = time.time()
-insertionSort(reversedData)
-endTime = time.time()
-totalTime = endTime - startTime
-print("Insertion Sort Reversed Data: %s seconds" %totalTime  )
-
-
-startTime = time.time()
-insertionSort(nearlySortedData)
-endTime = time.time()
-totalTime = endTime - startTime
-print("Insertion Sort Nearly Sorted Data: %s seconds" %totalTime  )
-
-
-startTime = time.time()
-insertionSort(fewUniqueData)
-endTime = time.time()
-totalTime = endTime - startTime
-print("Insertion Sort Few Unique Data: %s seconds" %totalTime  )
